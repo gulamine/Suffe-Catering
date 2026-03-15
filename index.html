@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="tr" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suffe Catering</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; }
+    * { box-sizing: border-box; }
+    .font-heading { font-family: 'Playfair Display', Georgia, serif; }
+    .font-body { font-family: 'DM Sans', Arial, sans-serif; }
+    .fade-in { animation: fadeIn 0.8s ease forwards; opacity: 0; }
+    .fade-in-d1 { animation-delay: 0.1s; }
+    .fade-in-d2 { animation-delay: 0.2s; }
+    .fade-in-d3 { animation-delay: 0.3s; }
+    .fade-in-d4 { animation-delay: 0.4s; }
+    .fade-in-d5 { animation-delay: 0.5s; }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } from { opacity: 0; transform: translateY(18px); } }
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: currentColor; transition: width 0.3s; }
+    .nav-link:hover::after { width: 100%; }
+    .service-card { transition: transform 0.3s, box-shadow 0.3s; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+    .photo-item { position: relative; overflow: hidden; border-radius: 12px; }
+    .photo-item img { transition: transform 0.4s; width: 100%; height: 200px; object-fit: cover; }
+    .photo-item:hover img { transform: scale(1.05); }
+    .photo-delete { position: absolute; top: 8px; right: 8px; opacity: 0; transition: opacity 0.3s; }
+    .photo-item:hover .photo-delete { opacity: 1; }
+    .toast-msg { animation: toastIn 0.4s ease, toastOut 0.4s ease 2.6s forwards; }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes toastOut { to { opacity: 0; transform: translateY(20px); } }
+    .hamburger-line { transition: all 0.3s; }
+    .mobile-menu { transition: max-height 0.4s ease, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+    .mobile-menu.open { max-height: 400px; opacity: 1; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+ </head>
+ <body class="h-full font-body" style="background-color: #faf8f5; color: #2d2a26;">
+  <div id="app-wrapper" class="w-full h-full overflow-auto" style="background-color: #faf8f5;"><!-- Navigation -->
+   <nav id="main-nav" class="fixed top-0 left-0 w-full z-50" style="background: rgba(250,248,245,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(45,42,38,0.08);">
+    <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between"><a href="#anasayfa" class="font-heading text-2xl font-bold" style="color: #8b6f47;">☪ Suffe Catering</a>
+     <div class="hidden md:flex items-center gap-8"><a href="#anasayfa" class="nav-link text-sm font-medium" style="color: #2d2a26;">Ana Sayfa</a> <a href="#hizmetler" class="nav-link text-sm font-medium" style="color: #2d2a26;">Hizmetler</a> <a href="#galeri" class="nav-link text-sm font-medium" style="color: #2d2a26;">Galeri</a> <a href="#iletisim" class="nav-link text-sm font-medium" style="color: #2d2a26;">İletişim</a> <a href="#teklif" class="px-5 py-2 rounded-full text-sm font-semibold text-white" style="background-color: #8b6f47;">Teklif Al</a>
+     </div><button id="mobile-toggle" class="md:hidden p-2" onclick="toggleMobileMenu()"> <i data-lucide="menu" style="color: #2d2a26;"></i> </button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu md:hidden px-5" style="background: rgba(250,248,245,0.98);">
+     <div class="flex flex-col gap-4 py-4"><a href="#anasayfa" class="text-sm font-medium" style="color: #2d2a26;" onclick="closeMobileMenu()">Ana Sayfa</a> <a href="#hizmetler" class="text-sm font-medium" style="color: #2d2a26;" onclick="closeMobileMenu()">Hizmetler</a> <a href="#galeri" class="text-sm font-medium" style="color: #2d2a26;" onclick="closeMobileMenu()">Galeri</a> <a href="#iletisim" class="text-sm font-medium" style="color: #2d2a26;" onclick="closeMobileMenu()">İletişim</a> <a href="#teklif" class="text-center px-5 py-2 rounded-full text-sm font-semibold text-white" style="background-color: #8b6f47;" onclick="closeMobileMenu()">Teklif Al</a>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <header id="anasayfa" class="relative w-full flex items-center justify-center text-center" style="min-height: 90%; background: linear-gradient(160deg, #faf8f5 0%, #f0e8dc 40%, #e8ddd0 100%);">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+     <div class="absolute top-20 right-10 w-72 h-72 rounded-full" style="background: radial-gradient(circle, rgba(139,111,71,0.08) 0%, transparent 70%);"></div>
+     <div class="absolute bottom-20 left-10 w-96 h-96 rounded-full" style="background: radial-gradient(circle, rgba(139,111,71,0.05) 0%, transparent 70%);"></div>
+    </div>
+    <div class="relative z-10 max-w-3xl mx-auto px-6 py-32">
+     <p class="fade-in fade-in-d1 text-xs font-semibold tracking-[0.3em] uppercase mb-6" style="color: #8b6f47;">Profesyonel Catering Hizmeti</p>
+     <h1 id="hero-title" class="fade-in fade-in-d2 font-heading text-5xl md:text-7xl font-800 leading-tight mb-6" style="color: #2d2a26;">Suffe Catering</h1>
+     <p id="hero-subtitle" class="fade-in fade-in-d3 text-lg md:text-xl leading-relaxed mb-10 max-w-xl mx-auto" style="color: #5c5650;">Cenaze yemekleri, düğün yemekleri, mevlit yemekleri ve açılış kokteylleri için profesyonel hizmet. Kaliteli, hijyenik ve zamanında servis ile özel günlerinizde yanınızdayız.</p>
+     <div class="fade-in fade-in-d4 flex flex-col sm:flex-row gap-4 justify-center"><a href="#teklif" class="px-8 py-3.5 rounded-full text-white font-semibold text-sm shadow-lg hover:shadow-xl transition-shadow" style="background-color: #8b6f47;">Ücretsiz Teklif Al</a> <a href="#hizmetler" class="px-8 py-3.5 rounded-full font-semibold text-sm border-2 transition-colors hover:bg-white" style="color: #8b6f47; border-color: #8b6f47;">Hizmetlerimiz</a>
+     </div>
+    </div>
+   </header><!-- Services Section -->
+   <section id="hizmetler" class="w-full py-24 px-5">
+    <div class="max-w-6xl mx-auto">
+     <p class="fade-in text-xs font-semibold tracking-[0.3em] uppercase text-center mb-3" style="color: #8b6f47;">Hizmetlerimiz</p>
+     <h2 class="fade-in font-heading text-3xl md:text-5xl font-bold text-center mb-4" style="color: #2d2a26;">Her Özel Gün İçin</h2>
+     <p class="fade-in text-center mb-16 max-w-lg mx-auto" style="color: #5c5650;">Yılların tecrübesiyle, her organizasyonunuz için özenle hazırlanmış menüler sunuyoruz.</p>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="service-card rounded-2xl p-8" style="background: #ffffff; border: 1px solid rgba(139,111,71,0.1);">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 text-2xl" style="background: linear-gradient(135deg, #f0e8dc, #e8ddd0);">
+        🕌
+       </div>
+       <h3 class="font-heading text-xl font-bold mb-3" style="color: #2d2a26;">Cenaze Yemekleri</h3>
+       <p class="text-sm leading-relaxed" style="color: #5c5650;">Zor günlerinizde yanınızdayız. Saygılı ve özenli servis ile cenaze sonrası yemek organizasyonlarınızı üstleniyoruz.</p>
+      </div>
+      <div class="service-card rounded-2xl p-8" style="background: #ffffff; border: 1px solid rgba(139,111,71,0.1);">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 text-2xl" style="background: linear-gradient(135deg, #f0e8dc, #e8ddd0);">
+        💍
+       </div>
+       <h3 class="font-heading text-xl font-bold mb-3" style="color: #2d2a26;">Düğün Yemekleri</h3>
+       <p class="text-sm leading-relaxed" style="color: #5c5650;">En mutlu gününüzde lezzetli ve gösterişli bir sofra kuruyoruz. Düğün menülerimizle damaklarınızı şenlendirelim.</p>
+      </div>
+      <div class="service-card rounded-2xl p-8" style="background: #ffffff; border: 1px solid rgba(139,111,71,0.1);">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 text-2xl" style="background: linear-gradient(135deg, #f0e8dc, #e8ddd0);">
+        📿
+       </div>
+       <h3 class="font-heading text-xl font-bold mb-3" style="color: #2d2a26;">Mevlit Yemekleri</h3>
+       <p class="text-sm leading-relaxed" style="color: #5c5650;">Mevlit organizasyonlarınız için geleneksel ve modern menü seçenekleri sunuyoruz.</p>
+      </div>
+      <div class="service-card rounded-2xl p-8" style="background: #ffffff; border: 1px solid rgba(139,111,71,0.1);">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 text-2xl" style="background: linear-gradient(135deg, #f0e8dc, #e8ddd0);">
+        🥂
+       </div>
+       <h3 class="font-heading text-xl font-bold mb-3" style="color: #2d2a26;">Açılış Kokteylleri</h3>
+       <p class="text-sm leading-relaxed" style="color: #5c5650;">İş yerinizin veya etkinliğinizin açılışında şık ve profesyonel kokteyl servisi sağlıyoruz.</p>
+      </div>
+      <div class="service-card rounded-2xl p-8" style="background: #ffffff; border: 1px solid rgba(139,111,71,0.1);">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 text-2xl" style="background: linear-gradient(135deg, #f0e8dc, #e8ddd0);">
+        🍽️
+       </div>
+       <h3 class="font-heading text-xl font-bold mb-3" style="color: #2d2a26;">Toplu Yemek</h3>
+       <p class="text-sm leading-relaxed" style="color: #5c5650;">Şirket etkinlikleri, toplantılar ve her türlü toplu yemek organizasyonunuz için hazırız.</p>
+      </div>
+      <div class="service-card rounded-2xl p-8" style="background: #ffffff; border: 1px solid rgba(139,111,71,0.1);">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 text-2xl" style="background: linear-gradient(135deg, #f0e8dc, #e8ddd0);">
+        🪑
+       </div>
+       <h3 class="font-heading text-xl font-bold mb-3" style="color: #2d2a26;">Masa &amp; Sandalye Kiralama</h3>
+       <p class="text-sm leading-relaxed" style="color: #5c5650;">Düğün, kokteyl, konferans ve her türlü etkinlik için kaliteli masa, sandalye ve mobilya kiralama hizmetleri.</p>
+      </div>
+      <div class="service-card rounded-2xl p-8" style="background: #ffffff; border: 1px solid rgba(139,111,71,0.1);">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 text-2xl" style="background: linear-gradient(135deg, #f0e8dc, #e8ddd0);">
+        🎊
+       </div>
+       <h3 class="font-heading text-xl font-bold mb-3" style="color: #2d2a26;">Süsleme &amp; Dekorasyon</h3>
+       <p class="text-sm leading-relaxed" style="color: #5c5650;">Etkinliğinizi unutulmaz kılacak şık ve yaratıcı dekorasyon tasarımları ve uygulaması.</p>
+      </div>
+      <div class="service-card rounded-2xl p-8" style="background: #ffffff; border: 1px solid rgba(139,111,71,0.1);">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 text-2xl" style="background: linear-gradient(135deg, #f0e8dc, #e8ddd0);">
+        📋
+       </div>
+       <h3 class="font-heading text-xl font-bold mb-3" style="color: #2d2a26;">Etkinlik Organizasyonu</h3>
+       <p class="text-sm leading-relaxed" style="color: #5c5650;">Planlama aşamasından sonuna kadar eksiksiz etkinlik yönetimi ve koordinasyon hizmetleri.</p>
+      </div>
+      <div class="service-card rounded-2xl p-8" style="background: #ffffff; border: 1px solid rgba(139,111,71,0.1);">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 text-2xl" style="background: linear-gradient(135deg, #f0e8dc, #e8ddd0);">
+        💐
+       </div>
+       <h3 class="font-heading text-xl font-bold mb-3" style="color: #2d2a26;">Ekstra Hizmetler</h3>
+       <p class="text-sm leading-relaxed" style="color: #5c5650;">Ses sistemi, ışıklandırma, sunucu, fotoğrafçı, kameraman gibi ek hizmetleri sağlıyoruz.</p>
+      </div>
+      <div class="service-card rounded-2xl p-8 flex flex-col items-center justify-center text-center" style="background: linear-gradient(135deg, #8b6f47, #a68556); border: none;">
+       <div class="text-3xl mb-3">
+        📞
+       </div>
+       <h3 class="font-heading text-xl font-bold mb-2 text-white">Paket Oluşturmak İster Misiniz?</h3>
+       <p class="text-sm text-white/80 mb-4">Tüm hizmetleri birleştirerek özel paket hazırlayalım</p><a href="#teklif" class="px-6 py-2.5 rounded-full text-sm font-semibold bg-white" style="color: #8b6f47;">Bize Ulaşın</a>
+      </div>
+     </div>
+    </div>
+   </section><!-- Photo Gallery / Google Business Profile Section -->
+   <section id="galeri" class="w-full py-24 px-5" style="background: linear-gradient(180deg, #f0e8dc 0%, #faf8f5 100%);">
+    <div class="max-w-6xl mx-auto">
+     <div class="flex items-center justify-center gap-3 mb-3">
+      <p class="text-xs font-semibold tracking-[0.3em] uppercase" style="color: #8b6f47;">📍 Google Business Profile</p>
+     </div>
+     <h2 class="font-heading text-3xl md:text-5xl font-bold text-center mb-4" style="color: #2d2a26;">Faaliyetlerimiz</h2>
+     <p class="text-center mb-10 max-w-lg mx-auto" style="color: #5c5650;">Organizasyonlarımızdan kareler. Fotoğraf ekleyerek galerinizi güncelleyin.</p>
+     <div class="flex justify-center mb-8"><label id="upload-btn" class="cursor-pointer inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-semibold text-sm shadow-lg hover:shadow-xl transition-all" style="background-color: #8b6f47;"> <i data-lucide="upload" style="width:18px;height:18px;"></i> Fotoğraf Yükle <input type="file" id="photo-upload" accept="image/*" multiple class="hidden" onchange="handlePhotoUpload(event)"> </label>
+     </div>
+     <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div id="gallery-empty" class="col-span-full text-center py-16 rounded-2xl" style="background: rgba(255,255,255,0.6); border: 2px dashed rgba(139,111,71,0.2);">
+       <div class="text-4xl mb-3">
+        📷
+       </div>
+       <p class="font-medium" style="color: #5c5650;">Henüz fotoğraf eklenmemiş</p>
+       <p class="text-sm mt-1" style="color: #8b8580;">Yukarıdaki butona tıklayarak fotoğraf yükleyin</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="iletisim" class="w-full py-24 px-5">
+    <div class="max-w-6xl mx-auto">
+     <p class="text-xs font-semibold tracking-[0.3em] uppercase text-center mb-3" style="color: #8b6f47;">İletişim</p>
+     <h2 class="font-heading text-3xl md:text-5xl font-bold text-center mb-16" style="color: #2d2a26;">Bize Ulaşın</h2>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"><a id="phone-card" href="tel:+905551234567" class="service-card rounded-2xl p-8 text-center block" style="background: #ffffff; border: 1px solid rgba(139,111,71,0.1); text-decoration: none;">
+       <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style="background: linear-gradient(135deg, #f0e8dc, #e8ddd0);"><i data-lucide="phone" style="color: #8b6f47; width:24px; height:24px;"></i>
+       </div><h3 class="font-heading text-lg font-bold mb-2" style="color: #2d2a26;">Telefon</h3><p id="phone-display" class="text-sm font-medium" style="color: #8b6f47;">+90 534 515 7363</p></a> <a id="whatsapp-card" href="https://wa.me/0534 515 73 63" target="_blank" rel="noopener noreferrer" class="service-card rounded-2xl p-8 text-center block" style="background: #ffffff; border: 1px solid rgba(139,111,71,0.1); text-decoration: none;">
+       <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style="background: linear-gradient(135deg, #dcf0dc, #c8e6c8);"><i data-lucide="message-circle" style="color: #25d366; width:24px; height:24px;"></i>
+       </div><h3 class="font-heading text-lg font-bold mb-2" style="color: #2d2a26;">WhatsApp</h3><p id="whatsapp-display" class="text-sm font-medium" style="color: #25d366;">+90 542 417 0446</p></a>
+      <div class="service-card rounded-2xl p-8 text-center" style="background: #ffffff; border: 1px solid rgba(139,111,71,0.1);">
+       <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style="background: linear-gradient(135deg, #f0e8dc, #e8ddd0);"><i data-lucide="map-pin" style="color: #8b6f47; width:24px; height:24px;"></i>
+       </div>
+       <h3 class="font-heading text-lg font-bold mb-2" style="color: #2d2a26;">Adres _Gmail_com</h3>
+       <p id="address-display" class="text-sm" style="color: #5c5650;">E-posta: ceo@suffecatering.com..Muğla-Marmaris, Türkiye</p>
+      </div>
+     </div><!-- Google Map -->
+     <div class="rounded-2xl overflow-hidden shadow-lg" style="border: 1px solid rgba(139,111,71,0.1);"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d385396.3509517498!2d28.731988099999998!3d41.0054958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2zxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" width="100%" height="350" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+     </div>
+    </div>
+   </section><!-- Quote Request Form -->
+   <section id="teklif" class="w-full py-24 px-5" style="background: linear-gradient(160deg, #2d2a26 0%, #3d3830 100%);">
+    <div class="max-w-2xl mx-auto">
+     <p class="text-xs font-semibold tracking-[0.3em] uppercase text-center mb-3" style="color: #c9a96e;">Teklif Formu</p>
+     <h2 class="font-heading text-3xl md:text-5xl font-bold text-center mb-4 text-white">Ücretsiz Teklif Alın</h2>
+     <p class="text-center mb-12" style="color: rgba(255,255,255,0.6);">Formu doldurun, size en kısa sürede dönüş yapalım.</p>
+     <form id="quote-form" class="space-y-5" onsubmit="handleFormSubmit(event)">
+      <div><label class="block text-sm font-medium mb-3" style="color: rgba(255,255,255,0.8);">Hizmetler (Birden Fazla Seçebilirsiniz)</label>
+       <div class="grid grid-cols-2 gap-3"><label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" class="form-service" value="cenaze" style="accent-color: #8b6f47; width: 18px; height: 18px;"> <span style="color: rgba(255,255,255,0.7); font-size: 14px;">Cenaze Yemeği</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" class="form-service" value="dugun" style="accent-color: #8b6f47; width: 18px; height: 18px;"> <span style="color: rgba(255,255,255,0.7); font-size: 14px;">Düğün Yemeği</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" class="form-service" value="mevlit" style="accent-color: #8b6f47; width: 18px; height: 18px;"> <span style="color: rgba(255,255,255,0.7); font-size: 14px;">Mevlit Yemeği</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" class="form-service" value="kokteyl" style="accent-color: #8b6f47; width: 18px; height: 18px;"> <span style="color: rgba(255,255,255,0.7); font-size: 14px;">Açılış Kokteyli</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" class="form-service" value="toplu" style="accent-color: #8b6f47; width: 18px; height: 18px;"> <span style="color: rgba(255,255,255,0.7); font-size: 14px;">Toplu Yemek</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" class="form-service" value="masa" style="accent-color: #8b6f47; width: 18px; height: 18px;"> <span style="color: rgba(255,255,255,0.7); font-size: 14px;">Masa &amp; Sandalye</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" class="form-service" value="susleme" style="accent-color: #8b6f47; width: 18px; height: 18px;"> <span style="color: rgba(255,255,255,0.7); font-size: 14px;">Süsleme &amp; Deko</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" class="form-service" value="org" style="accent-color: #8b6f47; width: 18px; height: 18px;"> <span style="color: rgba(255,255,255,0.7); font-size: 14px;">Organizasyon</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" class="form-service" value="ekstra" style="accent-color: #8b6f47; width: 18px; height: 18px;"> <span style="color: rgba(255,255,255,0.7); font-size: 14px;">Ekstra Hizmetler</span> </label>
+       </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+       <div><label for="form-name" class="block text-sm font-medium mb-2" style="color: rgba(255,255,255,0.8);">Ad Soyad</label> <input type="text" id="form-name" placeholder="Adınız Soyadınız" required class="w-full px-5 py-3.5 rounded-xl text-sm outline-none focus:ring-2" style="background: rgba(255,255,255,0.08); color: white; border: 1px solid rgba(255,255,255,0.12); --tw-ring-color: #8b6f47;">
+       </div>
+       <div><label for="form-phone" class="block text-sm font-medium mb-2" style="color: rgba(255,255,255,0.8);">Telefon</label> <input type="tel" id="form-phone" placeholder="+90 5XX XXX XXXX" required class="w-full px-5 py-3.5 rounded-xl text-sm outline-none focus:ring-2" style="background: rgba(255,255,255,0.08); color: white; border: 1px solid rgba(255,255,255,0.12); --tw-ring-color: #8b6f47;">
+       </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+       <div><label for="form-date" class="block text-sm font-medium mb-2" style="color: rgba(255,255,255,0.8);">Tarih</label> <input type="date" id="form-date" class="w-full px-5 py-3.5 rounded-xl text-sm outline-none focus:ring-2" style="background: rgba(255,255,255,0.08); color: white; border: 1px solid rgba(255,255,255,0.12); --tw-ring-color: #8b6f47;">
+       </div>
+       <div><label for="form-guests" class="block text-sm font-medium mb-2" style="color: rgba(255,255,255,0.8);">Kişi Sayısı</label> <input type="number" id="form-guests" placeholder="Tahmini kişi sayısı" class="w-full px-5 py-3.5 rounded-xl text-sm outline-none focus:ring-2" style="background: rgba(255,255,255,0.08); color: white; border: 1px solid rgba(255,255,255,0.12); --tw-ring-color: #8b6f47;">
+       </div>
+      </div>
+      <div><label for="form-message" class="block text-sm font-medium mb-2" style="color: rgba(255,255,255,0.8);">Mesajınız</label> <textarea id="form-message" rows="4" placeholder="Detayları buraya yazabilirsiniz..." class="w-full px-5 py-3.5 rounded-xl text-sm outline-none resize-none focus:ring-2" style="background: rgba(255,255,255,0.08); color: white; border: 1px solid rgba(255,255,255,0.12); --tw-ring-color: #8b6f47;"></textarea>
+      </div><button type="submit" id="submit-btn" class="w-full py-4 rounded-xl text-white font-bold text-sm tracking-wide shadow-lg hover:shadow-xl transition-all" style="background: linear-gradient(135deg, #8b6f47, #a68556);"> Teklif İste </button>
+      <div id="form-status" class="text-center text-sm font-medium hidden"></div>
+     </form>
+    </div>
+   </section><!-- Footer -->
+   <footer class="w-full py-10 px-5 text-center" style="background: #2d2a26; border-top: 1px solid rgba(255,255,255,0.06);">
+    <p class="font-heading text-lg font-bold mb-2" style="color: #c9a96e;">☪ Suffe Catering</p>
+    <p class="text-xs" style="color: rgba(255,255,255,0.4);">© 2025 Suffe Catering. Tüm hakları saklıdır.</p>
+   </footer>
+  </div><!-- Toast Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2"></div>
+  <script>
+  // ============ CONFIG & DEFAULTS ============
+  const defaultConfig = {
+    hero_title: 'Suffe Catering',
+    hero_subtitle: 'Cenaze yemekleri, düğün yemekleri, mevlit yemekleri ve açılış kokteylleri için profesyonel hizmet. Kaliteli, hijyenik ve zamanında servis ile özel günlerinizde yanınızdayız.',
+    phone_number: '+90(542)417 0446',
+    whatsapp_number: '+90(534)515 7363',
+    address_text: 'Muğla Marmaris, Türkiye E-posta: ceo@suffecatering.com ',
+    background_color: '#faf8f5',
+    surface_color: '#ffffff',
+    text_color: '#2d2a26',
+    primary_action_color: '#8b6f47',
+    secondary_action_color: '#5c5650',
+    font_family: 'Playfair Display',
+    font_size: 16
+  };
+
+  // Gallery photos stored locally (base64 - not in Data SDK since images can't be stored there)
+  let galleryPhotos = [];
+  try {
+    const saved = localStorage.getItem('suffe_gallery');
+    if (saved) galleryPhotos = JSON.parse(saved);
+  } catch(e) {}
+
+  // ============ ELEMENT SDK ============
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: async (config) => {
+      const c = key => config[key] || defaultConfig[key];
+
+      document.getElementById('hero-title').textContent = c('hero_title');
+      document.getElementById('hero-subtitle').textContent = c('hero_subtitle');
+      document.getElementById('phone-display').textContent = c('phone_number');
+      document.getElementById('whatsapp-display').textContent = c('whatsapp_number');
+      document.getElementById('address-display').textContent = c('address_text');
+
+      const phone = c('phone_number').replace(/\s+/g, '');
+      document.getElementById('phone-card').href = 'tel:' + phone;
+      const wa = c('whatsapp_number').replace(/[\s+]/g, '');
+      document.getElementById('whatsapp-card').href = 'https://wa.me/' + wa;
+
+      // Colors
+      const bg = c('background_color');
+      const surface = c('surface_color');
+      const text = c('text_color');
+      const primary = c('primary_action_color');
+      const secondary = c('secondary_action_color');
+
+      document.body.style.color = text;
+      document.getElementById('app-wrapper').style.backgroundColor = bg;
+
+      document.querySelectorAll('.service-card:not([style*="gradient"])').forEach(el => {
+        el.style.backgroundColor = surface;
+      });
+
+      document.querySelectorAll('.font-heading').forEach(el => {
+        const ff = c('font_family');
+        el.style.fontFamily = `${ff}, Georgia, serif`;
+      });
+
+      // Font size scaling
+      const baseSize = c('font_size');
+      document.getElementById('hero-title').style.fontSize = `${baseSize * 3}px`;
+      document.getElementById('hero-subtitle').style.fontSize = `${baseSize * 1.15}px`;
+    },
+    mapToCapabilities: (config) => {
+      const c = key => config[key] || defaultConfig[key];
+      const makeColor = (key) => ({
+        get: () => c(key),
+        set: (v) => { config[key] = v; window.elementSdk.setConfig({ [key]: v }); }
+      });
+      return {
+        recolorables: [
+          makeColor('background_color'),
+          makeColor('surface_color'),
+          makeColor('text_color'),
+          makeColor('primary_action_color'),
+          makeColor('secondary_action_color')
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => c('font_family'),
+          set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+        },
+        fontSizeable: {
+          get: () => c('font_size'),
+          set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+        }
+      };
+    },
+    mapToEditPanelValues: (config) => {
+      const c = key => config[key] || defaultConfig[key];
+      return new Map([
+        ['hero_title', c('hero_title')],
+        ['hero_subtitle', c('hero_subtitle')],
+        ['phone_number', c('phone_number')],
+        ['whatsapp_number', c('whatsapp_number')],
+        ['address_text', c('address_text')]
+         ['gmail_com', c('gmail_com')]
+      ]);
+    }
+  });
+
+  // ============ DATA SDK (for form submissions) ============
+  let formRecords = [];
+
+  const dataHandler = {
+    onDataChanged(data) {
+      formRecords = data;
+    }
+  };
+
+  (async () => {
+    const result = await window.dataSdk.init(dataHandler);
+    if (!result.isOk) console.error('Data SDK init failed');
+  })();
+
+  // ============ FORM HANDLING ============
+  async function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const status = document.getElementById('form-status');
+
+    const services = Array.from(document.querySelectorAll('.form-service:checked')).map(el => el.value);
+    const name = document.getElementById('form-name').value.trim();
+    const phone = document.getElementById('form-phone').value.trim();
+    const date = document.getElementById('form-date').value;
+    const guests = document.getElementById('form-guests').value;
+    const message = document.getElementById('form-message').value.trim();
+
+    if (!name || !phone) {
+      status.textContent = 'Lütfen ad ve telefon bilgilerinizi girin.';
+      status.style.color = '#ef4444';
+      status.classList.remove('hidden');
+      return;
+    }
+
+    if (services.length === 0) {
+      status.textContent = 'Lütfen en az bir hizmet seçiniz.';
+      status.style.color = '#ef4444';
+      status.classList.remove('hidden');
+      return;
+    }
+
+    if (formRecords.length >= 999) {
+      showToast('Maksimum kayıt sınırına ulaşıldı.', 'error');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Gönderiliyor...';
+
+    const result = await window.dataSdk.create({
+      type: services.join(', '),
+      name,
+      phone,
+      date: date || '',
+      guests: guests || '',
+      message: message || '',
+      created_at: new Date().toISOString()
+    });
+
+    btn.disabled = false;
+    btn.textContent = 'Teklif İste';
+
+    if (result.isOk) {
+      status.textContent = '✓ Talebiniz alındı! En kısa sürede dönüş yapacağız.';
+      status.style.color = '#22c55e';
+      status.classList.remove('hidden');
+      document.getElementById('quote-form').reset();
+      showToast('Teklif talebiniz başarıyla gönderildi!', 'success');
+    } else {
+      status.textContent = 'Bir hata oluştu. Lütfen tekrar deneyin.';
+      status.style.color = '#ef4444';
+      status.classList.remove('hidden');
+    }
+  }
+
+  // ============ PHOTO GALLERY ============
+  function handlePhotoUpload(e) {
+    const files = Array.from(e.target.files);
+    if (!files.length) return;
+
+    files.forEach(file => {
+      if (!file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        const id = 'photo_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
+        galleryPhotos.push({ id, data: ev.target.result, name: file.name });
+        saveGallery();
+        renderGallery();
+      };
+      reader.readAsDataURL(file);
+    });
+    e.target.value = '';
+  }
+
+  function deletePhoto(id) {
+    const item = document.querySelector(`[data-photo-id="${id}"]`);
+    if (!item) return;
+
+    // Two-step inline confirm
+    const existing = item.querySelector('.confirm-overlay');
+    if (existing) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'confirm-overlay absolute inset-0 flex flex-col items-center justify-center gap-2 z-10';
+    overlay.style.background = 'rgba(45,42,38,0.85)';
+    overlay.style.borderRadius = '12px';
+    overlay.innerHTML = `
+      <p class="text-white text-sm font-semibold">Silmek istediğinize emin misiniz?</p>
+      <div class="flex gap-2">
+        <button onclick="confirmDelete('${id}')" class="px-4 py-1.5 rounded-lg bg-red-500 text-white text-xs font-bold">Evet, Sil</button>
+        <button onclick="cancelDelete('${id}')" class="px-4 py-1.5 rounded-lg bg-white/20 text-white text-xs font-bold">İptal</button>
+      </div>
+    `;
+    item.appendChild(overlay);
+  }
+
+  function confirmDelete(id) {
+    galleryPhotos = galleryPhotos.filter(p => p.id !== id);
+    saveGallery();
+    renderGallery();
+    showToast('Fotoğraf silindi.', 'success');
+  }
+
+  function cancelDelete(id) {
+    const item = document.querySelector(`[data-photo-id="${id}"] .confirm-overlay`);
+    if (item) item.remove();
+  }
+
+  function saveGallery() {
+    try { localStorage.setItem('suffe_gallery', JSON.stringify(galleryPhotos)); } catch(e) {}
+  }
+
+  function renderGallery() {
+    const grid = document.getElementById('gallery-grid');
+    const empty = document.getElementById('gallery-empty');
+
+    if (galleryPhotos.length === 0) {
+      // Remove all photo items, keep empty state
+      grid.querySelectorAll('.photo-item').forEach(el => el.remove());
+      if (!empty) {
+        grid.innerHTML = `<div id="gallery-empty" class="col-span-full text-center py-16 rounded-2xl" style="background: rgba(255,255,255,0.6); border: 2px dashed rgba(139,111,71,0.2);">
+          <div class="text-4xl mb-3">📷</div>
+          <p class="font-medium" style="color: #5c5650;">Henüz fotoğraf eklenmemiş</p>
+          <p class="text-sm mt-1" style="color: #8b8580;">Yukarıdaki butona tıklayarak fotoğraf yükleyin</p>
+        </div>`;
+      } else {
+        empty.classList.remove('hidden');
+      }
+      return;
+    }
+
+    if (empty) empty.classList.add('hidden');
+
+    const existingMap = new Map();
+    grid.querySelectorAll('.photo-item').forEach(el => existingMap.set(el.dataset.photoId, el));
+
+    galleryPhotos.forEach(photo => {
+      if (existingMap.has(photo.id)) {
+        existingMap.delete(photo.id);
+      } else {
+        const div = document.createElement('div');
+        div.className = 'photo-item';
+        div.dataset.photoId = photo.id;
+        div.innerHTML = `
+          <img src="${photo.data}" alt="${photo.name}" loading="lazy" onerror="this.style.background='#e5e7eb'; this.alt='Yüklenemedi';">
+          <button class="photo-delete w-8 h-8 rounded-full flex items-center justify-center" style="background: rgba(239,68,68,0.9);" onclick="deletePhoto('${photo.id}')">
+            <i data-lucide="trash-2" style="width:14px;height:14px;color:white;"></i>
+          </button>
+        `;
+        grid.appendChild(div);
+      }
+    });
+
+    existingMap.forEach(el => el.remove());
+    lucide.createIcons();
+  }
+
+  // ============ MOBILE MENU ============
+  function toggleMobileMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+  }
+
+  // ============ TOAST ============
+  function showToast(msg, type) {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = 'toast-msg px-5 py-3 rounded-xl text-sm font-medium shadow-lg';
+    toast.style.background = type === 'success' ? '#22c55e' : '#ef4444';
+    toast.style.color = 'white';
+    toast.textContent = msg;
+    container.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+  }
+
+  // ============ INIT ============
+  renderGallery();
+  lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9dcaca9c5500b0d2',t:'MTc3MzU3MDA4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
