@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="tr" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suffe Catering</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+html{scroll-behavior:smooth}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;overflow-x:hidden}
+.font-heading{font-family:'Playfair Display',serif}
+.nav-blur{backdrop-filter:blur(12px);background:rgba(15,15,15,.85)}
+.hero-gradient{background:linear-gradient(135deg,#D94C1A 0%,#E67E3A 50%,#F5A962 100%)}
+.card-hover{transition:all .4s cubic-bezier(.25,.8,.25,1)}
+.card-hover:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(217,76,26,.25)}
+.gold-gradient{background:linear-gradient(135deg,#D94C1A,#FF6B35,#D94C1A)}
+.section-fade{opacity:0;transform:translateY(30px);transition:all .7s ease}
+.section-fade.visible{opacity:1;transform:translateY(0)}
+.gallery-grid img,.gallery-grid .gallery-placeholder{width:100%;height:200px;object-fit:cover;border-radius:12px;transition:transform .4s}
+.gallery-grid img:hover,.gallery-grid .gallery-placeholder:hover{transform:scale(1.03)}
+.toast{position:fixed;bottom:24px;right:24px;padding:16px 24px;border-radius:12px;color:#fff;z-index:9999;animation:slideUp .4s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.menu-card{border-left:3px solid #D94C1A;transition:all .3s}
+.menu-card:hover{background:rgba(217,76,26,.08)}
+input:focus,textarea:focus,select:focus{outline:none;box-shadow:0 0 0 2px #D94C1A}
+.confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:9999;animation:fadeIn .2s}
+</style>
+  <script>
+tailwind.config={theme:{extend:{colors:{brand:'#D94C1A','brand-dark':'#8B4513','brand-navy':'#FF6B35','brand-surface':'#FFF8F0','brand-text':'#3D2817'}}}}
+</script>
+  <style>body { box-sizing: border-box; }</style>
+ </head>
+ <body class="h-full bg-white text-brand-text">
+  <div id="app" class="w-full h-full overflow-auto"><!-- NAV -->
+   <nav id="navbar" class="fixed top-0 left-0 w-full z-50 nav-blur border-b border-white/10 transition-all">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between"><a href="#hero" class="font-heading text-2xl font-bold text-white tracking-wide" id="nav-brand">Suffe Catering</a>
+     <div class="hidden md:flex gap-6 text-sm text-gray-300"><a href="#services" class="hover:text-brand transition">Hizmetler</a> <a href="#menu" class="hover:text-brand transition">Menü</a> <a href="#packages" class="hover:text-brand transition">Paketler</a> <a href="#gallery" class="hover:text-brand transition">Galeri</a> <a href="#quote" class="hover:text-brand transition">Teklif Al</a> <a href="#contact" class="hover:text-brand transition">İletişim</a>
+     </div><button id="mobile-toggle" class="md:hidden text-white"><i data-lucide="menu" class="w-6 h-6"></i></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 text-gray-300 text-sm flex flex-col gap-3"><a href="#services" class="hover:text-brand">Hizmetler</a> <a href="#menu" class="hover:text-brand">Menü</a> <a href="#packages" class="hover:text-brand">Paketler</a> <a href="#gallery" class="hover:text-brand">Galeri</a> <a href="#quote" class="hover:text-brand">Teklif Al</a> <a href="#contact" class="hover:text-brand">İletişim</a>
+    </div>
+   </nav><!-- HERO -->
+   <section id="hero" class="hero-gradient relative flex items-center justify-center text-center text-white" style="min-height:600px;padding:120px 20px 80px">
+    <div class="max-w-3xl mx-auto">
+     <div class="gold-gradient w-20 h-1 mx-auto mb-6 rounded-full"></div>
+     <h1 id="heroTitle" class="font-heading text-5xl md:text-6xl font-bold mb-4 leading-tight">Suffe Catering</h1>
+     <p id="heroSubtitle" class="text-lg md:text-xl text-gray-300 mb-8 max-w-xl mx-auto">Özel günlerinizde yanınızdayız. Profesyonel catering hizmetleriyle unutulmaz sofralar kuruyoruz.</p>
+     <div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="#quote" class="bg-brand hover:bg-yellow-600 text-brand-dark font-semibold px-8 py-3 rounded-full transition">Ücretsiz Teklif Alın</a> <a href="#services" class="border border-white/30 hover:border-brand hover:text-brand px-8 py-3 rounded-full transition">Hizmetlerimiz</a>
+     </div>
+    </div>
+   </section><!-- SERVICES -->
+   <section id="services" class="py-20 px-4 bg-brand-surface section-fade">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-14">
+      <p class="text-brand font-semibold text-sm tracking-widest uppercase mb-2">Hizmetlerimiz</p>
+      <h2 class="font-heading text-4xl font-bold text-brand-dark">Neler Sunuyoruz?</h2>
+     </div>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="services-grid">
+     </div>
+    </div>
+   </section><!-- MENU -->
+   <section id="menu" class="py-20 px-4 bg-white section-fade">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-14">
+      <p class="text-brand font-semibold text-sm tracking-widest uppercase mb-2">Menümüz</p>
+      <h2 class="font-heading text-4xl font-bold">Lezzetli Yemeklerimiz</h2>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="menu-grid"></div>
+    </div>
+   </section><!-- PACKAGES -->
+   <section id="packages" class="py-20 px-4 bg-brand-surface section-fade">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-14">
+      <p class="text-brand font-semibold text-sm tracking-widest uppercase mb-2">Paketler</p>
+      <h2 class="font-heading text-4xl font-bold">Paket Oluşturun</h2>
+      <p class="text-gray-500 mt-3">İhtiyacınıza uygun hizmetleri seçin, size özel teklif alalım.</p>
+     </div>
+     <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6" id="package-checks"></div>
+      <div class="text-center mt-6"><a href="#quote" class="inline-block bg-brand hover:bg-yellow-600 text-brand-dark font-semibold px-10 py-3 rounded-full transition"> <i data-lucide="send" class="w-4 h-4 inline mr-2"></i>Bize Ulaşın &amp; Teklif Alın </a>
+      </div>
+     </div>
+    </div>
+   </section><!-- GALLERY -->
+   <section id="gallery" class="py-20 px-4 bg-white section-fade">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-14">
+      <p class="text-brand font-semibold text-sm tracking-widest uppercase mb-2">Galeri</p>
+      <h2 class="font-heading text-4xl font-bold">Faaliyetlerimiz</h2>
+     </div>
+     <div class="text-center mb-8"><label class="inline-flex items-center gap-2 bg-brand hover:bg-yellow-600 text-brand-dark font-semibold px-6 py-3 rounded-full cursor-pointer transition"> <i data-lucide="upload" class="w-5 h-5"></i> Fotoğraf Yükle <input type="file" accept="image/*" multiple class="hidden" id="gallery-upload"> </label>
+     </div>
+     <div class="gallery-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="gallery-container">
+      <div class="gallery-placeholder bg-gray-100 flex items-center justify-center rounded-xl" style="height:200px"><span class="text-gray-400 text-sm">Henüz fotoğraf yok</span>
+      </div>
+     </div>
+    </div>
+   </section><!-- QUOTE FORM -->
+   <section id="quote" class="py-20 px-4 bg-brand-dark text-white section-fade">
+    <div class="max-w-3xl mx-auto">
+     <div class="text-center mb-14">
+      <p class="text-brand font-semibold text-sm tracking-widest uppercase mb-2">Teklif</p>
+      <h2 class="font-heading text-4xl font-bold">Ücretsiz Teklif Alın</h2>
+      <p class="text-gray-400 mt-3">Formu doldurun, size en kısa sürede dönüş yapalım.</p>
+     </div>
+     <form id="quote-form" class="bg-white/5 border border-white/10 rounded-2xl p-8 space-y-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+       <div><label class="block text-sm text-gray-300 mb-1">Ad Soyad *</label> <input type="text" id="q-name" required class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-500" placeholder="Adınız Soyadınız">
+       </div>
+       <div><label class="block text-sm text-gray-300 mb-1">Telefon</label> <input type="tel" id="q-phone" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-500" placeholder="+90 5XX XXX XX XX">
+       </div>
+       <div><label class="block text-sm text-gray-300 mb-1">E-posta</label> <input type="email" id="q-email" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-500" placeholder="ornek@mail.com">
+       </div>
+       <div><label class="block text-sm text-gray-300 mb-1">Tarih *</label> <input type="date" id="q-date" required class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-500">
+       </div>
+       <div><label class="block text-sm text-gray-300 mb-1">Kişi Sayısı *</label> <input type="number" id="q-count" required min="1" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-500" placeholder="50">
+       </div>
+      </div>
+      <div><label class="block text-sm text-gray-300 mb-2">Hizmetler</label>
+       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="form-services"></div>
+      </div>
+      <div><label class="block text-sm text-gray-300 mb-1">Mesajınız</label> <textarea id="q-message" rows="4" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-500" placeholder="Detayları buraya yazabilirsiniz..."></textarea>
+      </div><button type="submit" id="q-submit" class="w-full bg-brand hover:bg-yellow-600 text-brand-dark font-bold py-4 rounded-full transition text-lg"> <i data-lucide="send" class="w-5 h-5 inline mr-2"></i>Teklif Gönder </button>
+      <div id="form-status" class="hidden text-center py-3 rounded-lg"></div>
+     </form>
+    </div>
+   </section><!-- CONTACT -->
+   <section id="contact" class="py-20 px-4 bg-brand-surface section-fade">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-14">
+      <p class="text-brand font-semibold text-sm tracking-widest uppercase mb-2">İletişim</p>
+      <h2 class="font-heading text-4xl font-bold">Bize Ulaşın</h2>
+     </div>
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div class="space-y-6">
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 bg-brand/20 rounded-xl flex items-center justify-center flex-shrink-0">
+         <i data-lucide="phone" class="w-5 h-5 text-brand"></i>
+        </div>
+        <div>
+         <p class="font-semibold">Telefon</p>
+         <p id="contactPhone" class="text-gray-600">+90 542 417 04 46</p>
+        </div>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 bg-brand/20 rounded-xl flex items-center justify-center flex-shrink-0">
+         <i data-lucide="message-circle" class="w-5 h-5 text-brand"></i>
+        </div>
+        <div>
+         <p class="font-semibold">WhatsApp</p><a id="contactWhatsappLink" href="https://wa.me/905325695040" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">+90 534 569 50 40 </a>
+        </div>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 bg-brand/20 rounded-xl flex items-center justify-center flex-shrink-0">
+         <i data-lucide="mail" class="w-5 h-5 text-brand"></i>
+        </div>
+        <div>
+         <p class="font-semibold">E-posta</p>
+         <p id="contactEmail" class="text-gray-600">info@suffecatering.com</p>
+        </div>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 bg-brand/20 rounded-xl flex items-center justify-center flex-shrink-0">
+         <i data-lucide="instagram" class="w-5 h-5 text-brand"></i>
+        </div>
+        <div>
+         <p class="font-semibold">Instagram</p>
+         <p class="text-gray-600">@suffecatering</p>
+        </div>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 bg-brand/20 rounded-xl flex items-center justify-center flex-shrink-0">
+         <i data-lucide="facebook" class="w-5 h-5 text-brand"></i>
+        </div>
+        <div>
+         <p class="font-semibold">Facebook</p>
+         <p class="text-gray-600">Suffe Catering</p>
+        </div>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 bg-brand/20 rounded-xl flex items-center justify-center flex-shrink-0">
+         <i data-lucide="map-pin" class="w-5 h-5 text-brand"></i>
+        </div>
+        <div>
+         <p class="font-semibold">Adres</p>
+         <p id="contactAddress" class="text-gray-600">Muğla,Marmaris, Türkiye</p>
+        </div>
+       </div>
+      </div>
+      <div>
+       <div class="w-full rounded-2xl overflow-hidden shadow-lg" style="height:400px"><iframe id="gmap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50763.51515863159!2d28.266666!3d36.839722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c2a56b5b5b5b5b%3A0x5b5b5b5b5b5b5b5b!2sMarmaris%2C%20Mu%C4%9Fla%2C%20Turkey!5e0!3m2!1sen!2str!4v1700000000000" width="100%" height="100%" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- FOOTER -->
+   <footer class="bg-brand-dark text-gray-400 py-10 px-4 text-center text-sm">
+    <p class="font-heading text-xl text-white mb-2">Suffe Catering</p>
+    <p>© 2024 Suffe Catering. Tüm hakları saklıdır.</p>
+   </footer>
+  </div><!-- CONFIRM OVERLAY TEMPLATE -->
+  <div id="confirm-overlay" class="confirm-overlay hidden">
+   <div class="bg-white rounded-2xl p-6 max-w-sm mx-4 text-center shadow-2xl">
+    <p class="text-lg font-semibold text-gray-800 mb-2">Fotoğrafı Sil</p>
+    <p class="text-gray-500 mb-6">Bu fotoğrafı silmek istediğinize emin misiniz?</p>
+    <div class="flex gap-3 justify-center"><button id="confirm-cancel" class="px-6 py-2 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition">İptal</button> <button id="confirm-delete" class="px-6 py-2 rounded-full bg-red-500 text-white hover:bg-red-600 transition">Sil</button>
+    </div>
+   </div>
+  </div>
+  <script>
+// DATA
+const SERVICES = [
+  {icon:'heart',name:'Cenaze Yemekleri',desc:'Acı gününüzde yanınızdayız'},
+  {icon:'sparkles',name:'Düğün Yemekleri',desc:'Mutlu gününüzü taçlandırıyoruz'},
+  {icon:'book-open',name:'Mevlit Yemekleri',desc:'Manevi günlerinize özel sofralar'},
+  {icon:'wine',name:'Açılış Kokteylleri',desc:'Şık ve profesyonel organizasyon'},
+  {icon:'users',name:'Toplu Yemek',desc:'Kurumsal ve toplu yemek hizmeti'},
+  {icon:'armchair',name:'Masa & Sandalye Kiralama',desc:'Ekipman kiralama hizmeti'},
+  {icon:'calendar',name:'Etkinlik Organizasyon',desc:'A\'dan Z\'ye organizasyon'},
+  {icon:'plus-circle',name:'Ekstra Hizmetler',desc:'İhtiyacınıza özel çözümler'}
+];
+
+const MENU_ITEMS = [
+  {cat:'Ana Yemek',items:['Tavuk Pilav','Orman Kebap','Et Sote','Tavuk Sote','Tavuk But','Nohut Yemeği','Kuru Fasulye']},
+  {cat:'Çorbalar',items:['Mercimek Çorbası','Ezogelin Çorbası','Yayla Çorbası']},
+  {cat:'Yan & Tatlı',items:['Mevsim Salata','Çoban Salata','Sütlaç','Kazandibi','Baklava','Revani','Tulumba']}
+];
+
+let galleryImages = [];
+let pendingDeleteIndex = null;
+let allFormData = [];
+let currentRecordCount = 0;
+
+// RENDER SERVICES
+function renderServices(){
+  const g=document.getElementById('services-grid');
+  const emojis=['🕌','💍','📿','🥗','👥','🪑','📅','➕'];
+  g.innerHTML=SERVICES.map((s,i)=>`
+    <div class="card-hover bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100">
+      <div class="text-5xl mb-4">${emojis[i]}</div>
+      <h3 class="font-semibold text-lg mb-1">${s.name}</h3>
+      <p class="text-gray-500 text-sm">${s.desc}</p>
+    </div>`).join('');
+}
+
+// RENDER MENU
+function renderMenu(){
+  const g=document.getElementById('menu-grid');
+  g.innerHTML=MENU_ITEMS.map(c=>`
+    <div>
+      <h3 class="font-heading text-xl font-bold mb-3 text-brand-dark flex items-center gap-2"><i data-lucide="utensils" class="w-5 h-5 text-brand"></i>${c.cat}</h3>
+      <div class="space-y-2">${c.items.map(i=>`<div class="menu-card bg-white rounded-lg px-4 py-3 text-gray-700">${i}</div>`).join('')}</div>
+    </div>`).join('');
+}
+
+// RENDER PACKAGE CHECKBOXES
+function renderPackageChecks(){
+  const g=document.getElementById('package-checks');
+  g.innerHTML=SERVICES.map((s,i)=>`
+    <label class="flex items-center gap-3 bg-brand-surface rounded-lg px-4 py-3 cursor-pointer hover:bg-brand/10 transition">
+      <input type="checkbox" class="pkg-check accent-brand w-5 h-5" value="${s.name}" checked>
+      <span class="text-sm font-medium">${s.name}</span>
+    </label>`).join('');
+}
+
+// RENDER FORM SERVICE CHECKBOXES
+function renderFormServices(){
+  const g=document.getElementById('form-services');
+  g.innerHTML=SERVICES.map(s=>`
+    <label class="flex items-center gap-2 cursor-pointer">
+      <input type="checkbox" class="svc-check accent-brand w-4 h-4" value="${s.name}" checked>
+      <span class="text-sm">${s.name}</span>
+    </label>`).join('');
+}
+
+// GALLERY
+function renderGallery(){
+  const c=document.getElementById('gallery-container');
+  if(galleryImages.length===0){
+    c.innerHTML='<div class="gallery-placeholder bg-gray-100 flex items-center justify-center rounded-xl" style="height:200px"><span class="text-gray-400 text-sm">Henüz fotoğraf yok</span></div>';
+    return;
+  }
+  c.innerHTML=galleryImages.map((src,i)=>`
+    <div class="relative group">
+      <img src="${src}" alt="Galeri ${i+1}" class="rounded-xl" style="height:200px;object-fit:cover;width:100%">
+      <button onclick="confirmDeleteImage(${i})" class="absolute top-2 right-2 w-8 h-8 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>`).join('');
+  lucide.createIcons();
+}
+
+document.getElementById('gallery-upload').addEventListener('change',function(e){
+  Array.from(e.target.files).forEach(f=>{
+    const r=new FileReader();
+    r.onload=ev=>{galleryImages.push(ev.target.result);renderGallery()};
+    r.readAsDataURL(f);
+  });
+  e.target.value='';
+});
+
+function confirmDeleteImage(i){
+  pendingDeleteIndex=i;
+  document.getElementById('confirm-overlay').classList.remove('hidden');
+}
+document.getElementById('confirm-cancel').addEventListener('click',()=>{
+  document.getElementById('confirm-overlay').classList.add('hidden');
+  pendingDeleteIndex=null;
+});
+document.getElementById('confirm-delete').addEventListener('click',()=>{
+  if(pendingDeleteIndex!==null){
+    galleryImages.splice(pendingDeleteIndex,1);
+    renderGallery();
+  }
+  document.getElementById('confirm-overlay').classList.add('hidden');
+  pendingDeleteIndex=null;
+});
+
+// TOAST
+function showToast(msg,ok=true){
+  const t=document.createElement('div');
+  t.className='toast '+(ok?'bg-green-600':'bg-red-500');
+  t.textContent=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),3500);
+}
+
+// FORM SUBMIT
+document.getElementById('quote-form').addEventListener('submit',async function(e){
+  e.preventDefault();
+  if(currentRecordCount>=999){showToast('Maksimum kayıt limitine ulaşıldı.',false);return;}
+  const btn=document.getElementById('q-submit');
+  btn.disabled=true;btn.textContent='Gönderiliyor...';
+  const svcs=[...document.querySelectorAll('.svc-check:checked')].map(c=>c.value).join(', ');
+  const data={
+    type:'quote',
+    name:document.getElementById('q-name').value,
+    phone:document.getElementById('q-phone').value,
+    email:document.getElementById('q-email').value,
+    date:document.getElementById('q-date').value,
+    person_count:document.getElementById('q-count').value,
+    services:svcs,
+    message:document.getElementById('q-message').value
+  };
+  const r=await window.dataSdk.create(data);
+  btn.disabled=false;btn.innerHTML='<i data-lucide="send" class="w-5 h-5 inline mr-2"></i>Teklif Gönder';
+  lucide.createIcons();
+  if(r.isOk){
+    showToast('Teklifiniz başarıyla gönderildi!');
+    this.reset();
+    renderFormServices();
+  }else{
+    showToast('Bir hata oluştu, lütfen tekrar deneyin.',false);
+  }
+});
+
+// MOBILE MENU
+document.getElementById('mobile-toggle').addEventListener('click',()=>{
+  const m=document.getElementById('mobile-menu');
+  m.classList.toggle('hidden');
+});
+document.querySelectorAll('#mobile-menu a').forEach(a=>a.addEventListener('click',()=>{
+  document.getElementById('mobile-menu').classList.add('hidden');
+}));
+
+// SECTION FADE IN
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.15});
+document.querySelectorAll('.section-fade').forEach(el=>observer.observe(el));
+
+// INIT
+renderServices();
+renderMenu();
+renderPackageChecks();
+renderFormServices();
+
+// DATA SDK
+const dataHandler={
+  onDataChanged(data){
+    allFormData=data;
+    currentRecordCount=data.length;
+  }
+};
+
+(async()=>{
+  const r=await window.dataSdk.init(dataHandler);
+  if(!r.isOk)console.error('Data SDK init failed');
+})();
+
+// ELEMENT SDK
+const defaultConfig={
+  hero_title:'Suffe Catering',
+  hero_subtitle:'Özel günlerinizde yanınızdayız. Profesyonel catering hizmetleriyle unutulmaz sofralar kuruyoruz.',
+  phone_number:'+90 532 569 50 40',
+  email_address:'info@suffecatering.com',
+  address_text:'Muğla,Marmaris, Türkiye',
+  background_color:'#FFF8F0',
+  surface_color:'#FFE8D6',
+  text_color:'#3D2817',
+  accent_color:'#D94C1A',
+  secondary_action_color:'#FF6B35',
+  font_family:'Playfair Display',
+  font_size:16
+};
+
+function applyConfig(cfg){
+  const c=k=>cfg[k]||defaultConfig[k];
+  document.getElementById('heroTitle').textContent=c('hero_title');
+  document.getElementById('heroSubtitle').textContent=c('hero_subtitle');
+  document.getElementById('nav-brand').textContent=c('hero_title');
+  document.getElementById('contactPhone').textContent=c('phone_number');
+  document.getElementById('contactWhatsappLink').textContent=c('phone_number');
+  document.getElementById('contactWhatsappLink').href='https://wa.me/'+c('phone_number').replace(/\D/g,'');
+  document.getElementById('contactEmail').textContent=c('email_address');
+  document.getElementById('contactAddress').textContent=c('address_text');
+
+  const accent=c('accent_color');
+  const bg=c('background_color');
+  const surface=c('surface_color');
+  const txt=c('text_color');
+  const sec=c('secondary_action_color');
+  document.documentElement.style.setProperty('--brand',accent);
+
+  // Apply colors to key elements
+  document.querySelectorAll('.bg-brand').forEach(el=>{el.style.backgroundColor=accent});
+  document.querySelectorAll('.text-brand').forEach(el=>{el.style.color=accent});
+  const hero=document.getElementById('hero');
+  if(hero)hero.style.background=`linear-gradient(135deg,${bg} 0%,${sec} 50%,${bg} 100%)`;
+
+  document.querySelectorAll('.bg-brand-surface').forEach(el=>{el.style.backgroundColor=surface});
+  document.querySelectorAll('.font-heading').forEach(el=>{
+    el.style.fontFamily=`${c('font_family')}, serif`;
+  });
+
+  const baseSize=c('font_size');
+  document.getElementById('heroTitle').style.fontSize=`${baseSize*3}px`;
+  document.getElementById('heroSubtitle').style.fontSize=`${baseSize*1.1}px`;
+}
+
+window.elementSdk.init({
+  defaultConfig,
+  onConfigChange:async(cfg)=>applyConfig(cfg),
+  mapToCapabilities:(cfg)=>{
+    const mk=(key)=>({
+      get:()=>cfg[key]||defaultConfig[key],
+      set:(v)=>{cfg[key]=v;window.elementSdk.setConfig({[key]:v})}
+    });
+    return{
+      recolorables:[mk('background_color'),mk('surface_color'),mk('text_color'),mk('accent_color'),mk('secondary_action_color')],
+      borderables:[],
+      fontEditable:mk('font_family'),
+      fontSizeable:{get:()=>cfg.font_size||defaultConfig.font_size,set:(v)=>{cfg.font_size=v;window.elementSdk.setConfig({font_size:v})}}
+    };
+  },
+  mapToEditPanelValues:(cfg)=>new Map([
+    ['hero_title',cfg.hero_title||defaultConfig.hero_title],
+    ['hero_subtitle',cfg.hero_subtitle||defaultConfig.hero_subtitle],
+    ['phone_number',cfg.phone_number||defaultConfig.phone_number],
+    ['email_address',cfg.email_address||defaultConfig.email_address],
+    ['address_text',cfg.address_text||defaultConfig.address_text]
+  ])
+});
+
+lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9dd343a14295bc3c',t:'MTc3MzY1ODkzMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
