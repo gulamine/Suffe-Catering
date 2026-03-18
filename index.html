@@ -107,7 +107,11 @@ input:focus, textarea:focus, select:focus {
  <body class="h-full bg-cream font-body text-bark">
   <div class="app-wrapper w-full" id="app"><!-- NAVBAR -->
    <nav class="fixed top-0 left-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-sand/50" id="navbar">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20"><a href="#home" class="flex items-center gap-2"> <span class="text-3xl">🍽️</span> <span class="font-display font-bold text-xl sm:text-2xl text-bark" id="nav-logo">Suffe Catering - Marmaris</span> </a>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20"><a href="#home" class="flex items-center gap-2 group">
+      <div class="flex flex-col -space-y-1"><span class="font-display font-extrabold text-sm sm:text-base leading-tight text-spice">SUFFE</span> <span class="font-display font-light text-xs sm:text-sm tracking-widest text-olive/60">CATERING</span>
+      </div>
+      <div id="navbar-logo" class="w-8 h-8 sm:w-10 sm:h-10 group-hover:scale-105 transition-transform rounded-full bg-spice/10 flex items-center justify-center"><span class="text-xs text-spice font-bold">Logo</span>
+      </div></a>
      <div class="hidden lg:flex items-center gap-6 text-sm font-medium"><a href="#home" class="nav-link text-bark/80 hover:text-spice">Ana Sayfa</a> <a href="#about" class="nav-link text-bark/80 hover:text-spice">Hakkımızda</a> <a href="#services" class="nav-link text-bark/80 hover:text-spice">Hizmetler</a> <a href="#menu" class="nav-link text-bark/80 hover:text-spice">Menü</a> <a href="#calculator" class="nav-link text-bark/80 hover:text-spice">Hesapla</a> <a href="#gallery" class="nav-link text-bark/80 hover:text-spice">Galeri</a> <a href="#reviews" class="nav-link text-bark/80 hover:text-spice">Yorumlar</a> <a href="#contact" class="nav-link text-bark/80 hover:text-spice">İletişim</a> <a href="#quote" class="bg-spice text-cream px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-spice/90 transition">Teklif Al</a>
      </div><button class="lg:hidden text-bark" id="menu-toggle" aria-label="Menüyü aç"> <i data-lucide="menu" class="w-6 h-6"></i> </button>
     </div>
@@ -120,7 +124,7 @@ input:focus, textarea:focus, select:focus {
     <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
      <div class="flex-1 text-center lg:text-left">
       <div class="anim-up inline-block bg-olive/10 text-olive text-xs font-semibold px-4 py-1.5 rounded-full mb-5">
-       🌿 2010'dan Beri Hizmetinizde
+       🌿 2025'ten Beri Marmaris
       </div>
       <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight text-bark anim-up-d1" id="hero-title">Suffe Catering</h1>
       <p class="font-display text-xl sm:text-2xl text-spice mt-3 anim-up-d2" id="hero-slogan">Lezzet ve Şıklığın Buluştuğu Yer</p>
@@ -130,15 +134,31 @@ input:focus, textarea:focus, select:focus {
      </div>
      <div class="flex-1 anim-up-d2">
       <div class="relative">
-       <div class="w-64 h-64 sm:w-80 sm:h-80 mx-auto rounded-full bg-gradient-to-br from-spice/20 via-sand/40 to-olive/20 flex items-center justify-center anim-float">
-        <div class="text-center">
-         <div class="text-7xl sm:text-8xl">
-          🍲
-         </div>
-         <div class="text-4xl mt-2">
-          🥗 🍰
-         </div>
-        </div>
+       <div class="w-64 h-64 sm:w-96 sm:h-96 mx-auto rounded-full bg-gradient-to-br from-spice/20 via-sand/40 to-olive/20 flex items-center justify-center anim-float">
+        <svg class="w-48 sm:w-64 h-48 sm:h-64" viewbox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <defs>
+          <radialgradient id="plateBg" cx="50%" cy="50%" r="50%">
+           <stop offset="0%" style="stop-color:#FDF6EC;stop-opacity:1" />
+           <stop offset="100%" style="stop-color:#E8D5B7;stop-opacity:1" />
+          </radialgradient>
+          <lineargradient id="forkGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+           <stop offset="0%" style="stop-color:#C4713B;stop-opacity:1" />
+           <stop offset="100%" style="stop-color:#A0522D;stop-opacity:1" />
+          </lineargradient>
+          <lineargradient id="knifeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+           <stop offset="0%" style="stop-color:#5B7553;stop-opacity:1" />
+           <stop offset="100%" style="stop-color:#3D4D39;stop-opacity:1" />
+          </lineargradient>
+         </defs> <!-- Plate outer ring --> <circle cx="100" cy="100" r="95" fill="url(#plateBg)" stroke="#C4713B" stroke-width="3" /> <circle cx="100" cy="100" r="88" fill="none" stroke="#C4713B" stroke-width="1.5" opacity="0.4" /> <circle cx="100" cy="100" r="80" fill="none" stroke="#C4713B" stroke-width="0.8" opacity="0.2" /> <!-- Fork - left side --> <line x1="65" y1="50" x2="65" y2="140" stroke="url(#forkGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /> <!-- Fork prongs with curve --> <path d="M 48 65 Q 48 75 48 140" fill="none" stroke="url(#forkGrad)" stroke-width="4" stroke-linecap="round" /> <path d="M 65 60 Q 65 75 65 140" fill="none" stroke="url(#forkGrad)" stroke-width="4" stroke-linecap="round" /> <path d="M 82 65 Q 82 75 82 140" fill="none" stroke="url(#forkGrad)" stroke-width="4" stroke-linecap="round" /> <!-- Fork handle connector with elegant curve --> <path d="M 48 65 Q 65 55 82 65" fill="none" stroke="url(#forkGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" /> <!-- Fork base --> <ellipse cx="65" cy="145" rx="20" ry="8" fill="#C4713B" opacity="0.6" /> <!-- Knife - right side with elegant curve --> <path d="M 135 45 Q 137 65 138 140" fill="none" stroke="url(#knifeGrad)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" /> <!-- Knife edge detail --> <path d="M 132 55 Q 135 80 134 140" fill="none" stroke="url(#knifeGrad)" stroke-width="2" opacity="0.4" stroke-linecap="round" /> <!-- Knife tip sharp point --> <polygon points="138,45 140,52 136,50" fill="#5B7553" /> <circle cx="138" cy="45" r="2.5" fill="#3D4D39" /> <!-- Knife handle --> <rect x="130" y="130" width="14" height="18" rx="3" fill="#5B7553" opacity="0.7" /> <!-- Decorative elements - Olive leaves --> <g opacity="0.85">
+          <!-- Leaf group top -->
+          <path d="M 95 35 Q 98 28 102 35 Q 99 40 95 35" fill="#5B7553" />
+          <path d="M 99 32 Q 99.8 33 99 37" stroke="#5B7553" stroke-width="1" fill="none" opacity="0.6" /> <!-- Leaf 2 -->
+          <path d="M 105 32 Q 110 26 113 33 Q 109 36 105 32" fill="#5B7553" opacity="0.75" />
+          <path d="M 108 31 Q 109 31.8 108 34" stroke="#5B7553" stroke-width="1" fill="none" opacity="0.6" /> <!-- Leaf 3 bottom left -->
+          <path d="M 88 160 Q 85 168 92 170 Q 90 164 88 160" fill="#5B7553" opacity="0.7" /> <!-- Leaf 4 bottom right -->
+          <path d="M 148 165 Q 152 170 156 165 Q 153 160 148 165" fill="#5B7553" opacity="0.7" />
+         </g> <!-- Center decorative circle --> <circle cx="100" cy="100" r="5.5" fill="#C4713B" opacity="0.5" /> <!-- Inner accent circle --> <circle cx="100" cy="100" r="2" fill="#5B7553" opacity="0.8" />
+        </svg>
        </div>
        <div class="absolute -top-4 -right-2 bg-white rounded-2xl shadow-lg p-3 anim-float" style="animation-delay: 0.5s">
         <div class="text-2xl">
@@ -168,14 +188,14 @@ input:focus, textarea:focus, select:focus {
        <div class="text-5xl mb-3">
         🍖
        </div>
-       <h3 class="font-display font-semibold text-bark">ev yemeklerimiz</h3>
+       <h3 class="font-display font-semibold text-bark">Tas Kebabı</h3>
        <p class="text-xs text-bark/60 mt-1">Geleneksel lezzet</p>
       </div>
       <div class="menu-card bg-white rounded-2xl p-4 sm:p-5 shadow-sm text-center cursor-default">
        <div class="text-5xl mb-3">
         🍚
        </div>
-       <h3 class="font-display font-semibold text-bark">sulu ev yemeklerimiz</h3>
+       <h3 class="font-display font-semibold text-bark">Tavuk Pilav</h3>
        <p class="text-xs text-bark/60 mt-1">Herkesin favorisi</p>
       </div>
       <div class="menu-card bg-white rounded-2xl p-4 sm:p-5 shadow-sm text-center cursor-default">
@@ -189,7 +209,7 @@ input:focus, textarea:focus, select:focus {
        <div class="text-5xl mb-3">
         🍮
        </div>
-       <h3 class="font-display font-semibold text-bark">muhallebi</h3>
+       <h3 class="font-display font-semibold text-bark">Baklava</h3>
        <p class="text-xs text-bark/60 mt-1">Tatlı keyfi</p>
       </div>
      </div>
@@ -251,7 +271,7 @@ input:focus, textarea:focus, select:focus {
        Hakkımızda
       </div>
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-bark mb-5">Geleneksel Lezzet, Modern Sunum</h2>
-      <p class="text-bark/70 leading-relaxed mb-4" id="about-text">2025 yılından beri Marmaris'da toplu yemek ve catering hizmeti sunmaktayız. Taze ve doğal malzemelerle, hijyen standartlarına uygun olarak hazırlanan yemeklerimiz, profesyonel şeflerimiz tarafından özenle pişirilmektedir.</p>
+      <p class="text-bark/70 leading-relaxed mb-4" id="about-text">2010 yılından beri İstanbul'da toplu yemek ve catering hizmeti sunmaktayız. Taze ve doğal malzemelerle, hijyen standartlarına uygun olarak hazırlanan yemeklerimiz, profesyonel şeflerimiz tarafından özenle pişirilmektedir.</p>
       <div class="space-y-3 mt-6">
        <div class="flex items-center gap-3">
         <span class="w-8 h-8 bg-olive/10 rounded-full flex items-center justify-center text-olive"><i data-lucide="check" class="w-4 h-4"></i></span><span class="text-sm">%100 taze ve doğal malzeme</span>
@@ -404,7 +424,7 @@ input:focus, textarea:focus, select:focus {
        </div>
       </div>
       <div class="mt-6 text-sm text-bark/50">
-       Kişi başı: <span class="font-bold text-spice text-lg">200₺</span>
+       Kişi başı: <span class="font-bold text-spice text-lg">150 ₺</span>
       </div>
      </div>
     </div>
@@ -596,9 +616,21 @@ input:focus, textarea:focus, select:focus {
     <div class="max-w-7xl mx-auto">
      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
       <div>
-       <div class="flex items-center gap-2 mb-4"><span class="text-2xl">🍽️</span> <span class="font-display font-bold text-xl text-cream" id="footer-logo">Suffe Catering</span>
+       <div class="flex items-center gap-2 mb-4">
+        <svg class="w-8 h-8" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><defs>
+          <lineargradient id="logoGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+           <stop offset="0%" style="stop-color:#C4713B;stop-opacity:1" />
+           <stop offset="100%" style="stop-color:#5B7553;stop-opacity:1" />
+          </lineargradient>
+         </defs> <circle cx="50" cy="50" r="48" fill="#FDF6EC" stroke="#C4713B" stroke-width="1.5" /> <circle cx="50" cy="50" r="42" fill="none" stroke="#C4713B" stroke-width="1" opacity="0.3" /> <line x1="32" y1="28" x2="32" y2="70" stroke="#C4713B" stroke-width="2.5" stroke-linecap="round" /> <line x1="24" y1="35" x2="24" y2="68" stroke="#C4713B" stroke-width="1.8" stroke-linecap="round" /> <line x1="32" y1="33" x2="32" y2="70" stroke="#C4713B" stroke-width="1.8" stroke-linecap="round" /> <line x1="40" y1="35" x2="40" y2="68" stroke="#C4713B" stroke-width="1.8" stroke-linecap="round" /> <path d="M 24 35 Q 32 30 40 35" fill="none" stroke="#C4713B" stroke-width="2" stroke-linecap="round" /> <path d="M 68 25 Q 68.5 27 69 70" fill="none" stroke="#5B7553" stroke-width="2.5" stroke-linecap="round" /> <path d="M 66 30 Q 68 35 67 70" fill="none" stroke="#5B7553" stroke-width="1.2" opacity="0.5" stroke-linecap="round" /> <circle cx="69" cy="24" r="2.5" fill="#5B7553" /> <g opacity="0.8">
+          <path d="M 48 15 Q 50 12 52 15 Q 50 17 48 15" fill="#5B7553" opacity="0.6" />
+          <path d="M 50 13 Q 50.5 13.5 50 15" stroke="#5B7553" stroke-width="0.8" fill="none" />
+          <path d="M 52 17 Q 55 14 56 18 Q 54 19 52 17" fill="#5B7553" opacity="0.5" />
+          <path d="M 54 17 Q 54.5 17.5 54 18.5" stroke="#5B7553" stroke-width="0.8" fill="none" />
+         </g> <circle cx="50" cy="50" r="3" fill="#C4713B" opacity="0.4" />
+        </svg><span class="font-display font-bold text-xl text-cream" id="footer-logo">Suffe Catering</span>
        </div>
-       <p class="text-sm text-cream/50 leading-relaxed">Toplu yemek ve organizasyon hizmetleri. 2025'dan beri lezzet ve kaliteyle yanınızdayız.</p>
+       <p class="text-sm text-cream/50 leading-relaxed">Toplu yemek ve organizasyon hizmetleri. 2010'dan beri lezzet ve kaliteyle yanınızdayız.</p>
       </div>
       <div>
        <h4 class="font-display font-semibold text-cream mb-4">Hizmetler</h4>
@@ -622,7 +654,7 @@ input:focus, textarea:focus, select:focus {
        <h4 class="font-display font-semibold text-cream mb-4">İletişim</h4>
        <div class="space-y-2 text-sm text-cream/50">
         <div id="footer-phone">
-         📞 0532 569 50 40
+         📞 0532 000 00 00
         </div>
         <div id="footer-email">
          ✉️ info@suffecatering.com
@@ -955,7 +987,7 @@ const defaultConfig = {
   whatsapp_number: '905425170446',
   email_address: 'info@suffecatering.com',
   address_text: 'Muğla, Marmaris, Türkiye',
-  about_text: '2010 yılından beri İstanbul\'da toplu yemek ve catering hizmeti sunmaktayız. Taze ve doğal malzemelerle, hijyen standartlarına uygun olarak hazırlanan yemeklerimiz, profesyonel şeflerimiz tarafından özenle pişirilmektedir.',
+  about_text: '2025 yılından beri maramris de toplu yemek ve catering hizmeti sunmaktayız. Taze ve doğal malzemelerle, hijyen standartlarına uygun olarak hazırlanan yemeklerimiz, profesyonel şeflerimiz tarafından özenle pişirilmektedir.',
   background_color: '#FDF6EC',
   surface_color: '#FFFFFF',
   text_color: '#2C1810',
@@ -1040,5 +1072,5 @@ if (window.elementSdk) {
 
 lucide.createIcons();
 </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9dd42867335bbc3c',t:'MTc3MzY2ODMwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9dd447fff56dbc3c',t:'MTc3MzY2OTU5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
